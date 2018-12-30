@@ -1,28 +1,28 @@
-'use strict'
+'use strict';
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
-const Schema = use('Schema')
+const Schema = use('Schema');
 
 class ProductsAttributesSchema extends Schema {
   up () {
-    this.create('products-attributes', table => {
+    this.create('productsattributes', table => {
       table.increments();
       table
-          .integer('value').notNullable()
+          .json('value').notNullable()
           .default(0);
       table
-          .integer('attributes_id').notNullable()
+          .integer('attribute_id').notNullable()
           .index();
       table
-          .foreign('attributes_id')
+          .foreign('attribute_id')
           .references('id')
           .on('attributes')
           .onDelete('cascade');
       table
-          .integer('products_id').notNullable()
+          .integer('product_id').notNullable()
           .index();
       table
-          .foreign('products_id')
+          .foreign('product_id')
           .references('id')
           .on('products')
           .onDelete('cascade');
@@ -30,8 +30,8 @@ class ProductsAttributesSchema extends Schema {
   }
 
   down () {
-    this.drop('products_attributes')
+    this.drop('productsattributes')
   }
 }
 
-module.exports = ProductsAttributesSchema
+module.exports = ProductsAttributesSchema;
