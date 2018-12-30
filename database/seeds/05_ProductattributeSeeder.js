@@ -17,18 +17,17 @@ const Database = use('Database');
 const ProductAttribute = use('App/Models/ProductAttribute');
 
 class ProductattributeSeeder {
-
   async run () {
     await ProductAttribute.query().delete();
 
-    const types = [{
-      value: 5,
-      attribute_id: 19,
-      product_id: 23
-    }
-    ];
-
-    await ProductAttribute.createMany(types);
+    await Database.table('product_attributes').insert(
+        [{
+          value: 5,
+          attribute_id: 21,
+          product_id: 27
+        }
+        ]
+    )
   }
 }
 

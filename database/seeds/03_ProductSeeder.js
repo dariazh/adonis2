@@ -23,8 +23,8 @@ class ProductSeeder {
         [{
           name: 'fleece',
           price: 500,
-          type_id: 111,
-          user_id: 49,
+          type_id: 127,
+          user_id: 57,
           created_at: Database.fn.now()
         }
         ]

@@ -12,8 +12,8 @@ class Attribute extends Model {
         return this.belongsTo('App/Models/Type');
     }
 
-    productsattributes() {
-        return this.hasMany('App/Models/ProductAttribute');
+    product_attributes() {
+        return this.manyThrough('App/Models/ProductAttribute');
     }
 }
 

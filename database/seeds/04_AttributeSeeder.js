@@ -23,7 +23,7 @@ class AttributeSeeder {
     await Database.table('attributes').insert(
         [{
           name: 'color',
-          type_id: 111,
+          type_id: 127,
         }
         ]
     )
