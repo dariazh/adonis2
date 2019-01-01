@@ -1,11 +1,19 @@
 class AuthController {
 
     async login({response}) {
-        return [
-            {
-                login: "login"
-            }
-        ]
+
+    }
+
+    async create({response}) {
+
+    }
+
+    async register({response}) {
+
+    }
+
+    async delete({response}){
+
     }
 
 }
