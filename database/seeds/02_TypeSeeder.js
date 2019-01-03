@@ -19,15 +19,15 @@ class TypeSeeder {
   async run () {
     await Type.query().delete();
 
-    const types = [
-      {name: 'jackets'},
-      {name: 'clothing'},
-      {name: 'footwear'},
-      {name: 'climb'},
+    const Types = [
+      {name: 'laptop'},
+      {name: 'ebook'},
+      {name: 'phone'}
     ];
 
-    await Type.createMany(types);
+    await Type.createMany(Types);
   }
+
 }
 
 module.exports = TypeSeeder;
