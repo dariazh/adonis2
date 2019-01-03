@@ -1,12 +1,12 @@
-'use strict';
-const Product = use('App/Models/Product');
+'use strict'
 
+const Type = use('App/Models/Type');
 
-class ProductController {
+class TypeController {
     async index () {
         return [
             {
-                productController: "index"
+                typeController: "index"
             }
         ]
     }
@@ -14,7 +14,7 @@ class ProductController {
     async store() {
         return [
             {
-                productController: "store"
+                typeController: "store"
             }
         ]
     }
@@ -22,7 +22,7 @@ class ProductController {
     async show() {
         return [
             {
-                productController: "show"
+                typeController: "show"
             }
         ]
     }
@@ -30,7 +30,7 @@ class ProductController {
     async edit () {
         return [
             {
-                productController: "edit"
+                typeController: "edit"
             }
         ]
     }
@@ -38,10 +38,10 @@ class ProductController {
     async destroy () {
         return [
             {
-                productController: "destroy"
+                typeController: "destroy"
             }
         ]
     }
 }
 
-module.exports = ProductController;
+module.exports = TypeController

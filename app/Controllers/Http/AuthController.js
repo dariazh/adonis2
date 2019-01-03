@@ -1,19 +1,27 @@
 class AuthController {
 
-    async login({response}) {
-
+    async login() {
+        return [
+            {
+                authController: "login",
+            }
+        ]
     }
 
-    async create({response}) {
-
+    async logout() {
+        return [
+            {
+                authController: "logout",
+            }
+        ]
     }
 
-    async register({response}) {
-
-    }
-
-    async delete({response}){
-
+    async register() {
+        return [
+            {
+                authController: "register",
+            }
+        ]
     }
 
 }

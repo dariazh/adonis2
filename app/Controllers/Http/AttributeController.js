@@ -1,12 +1,12 @@
-'use strict';
-const Product = use('App/Models/Product');
+'use strict'
 
+const Attribute = use('App/Models/Attribute');
 
-class ProductController {
+class AttributeController {
     async index () {
         return [
             {
-                productController: "index"
+                attributeController: "index"
             }
         ]
     }
@@ -14,7 +14,7 @@ class ProductController {
     async store() {
         return [
             {
-                productController: "store"
+                attributeController: "store"
             }
         ]
     }
@@ -22,7 +22,7 @@ class ProductController {
     async show() {
         return [
             {
-                productController: "show"
+                attributeController: "show"
             }
         ]
     }
@@ -30,7 +30,7 @@ class ProductController {
     async edit () {
         return [
             {
-                productController: "edit"
+                attributeController: "edit"
             }
         ]
     }
@@ -38,10 +38,10 @@ class ProductController {
     async destroy () {
         return [
             {
-                productController: "destroy"
+                attributeController: "destroy"
             }
         ]
     }
 }
 
-module.exports = ProductController;
+module.exports = AttributeController
