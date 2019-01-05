@@ -26,10 +26,10 @@ class ProductController {
         ]
     }
 
-    async edit () {
+    async update () {
         return [
             {
-                productController: "edit"
+                productController: "update"
             }
         ]
     }

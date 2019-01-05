@@ -25,10 +25,10 @@ class AttributeController {
         ]
     }
 
-    async edit () {
+    async update () {
         return [
             {
-                attributeController: "edit"
+                attributeController: "update"
             }
         ]
     }

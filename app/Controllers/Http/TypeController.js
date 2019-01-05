@@ -25,10 +25,10 @@ class TypeController {
         ]
     }
 
-    async edit () {
+    async update () {
         return [
             {
-                typeController: "edit"
+                typeController: "update"
             }
         ]
     }
