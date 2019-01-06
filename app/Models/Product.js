@@ -12,8 +12,12 @@ class Product extends Model {
         return this.belongsTo('App/Models/Type');
     }
 
+    users() {
+        return this.belongsTo('App/Models/User');
+    }
+
     product_attributes() {
-        return this.manyThrough('App/Models/ProductAttribute');
+        return this.belongsToMany('App/Models/ProductAttribute');
     }
 }
 

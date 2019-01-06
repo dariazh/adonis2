@@ -8,6 +8,10 @@ class ProductAttribute extends Model {
         return null;
     }
 
+    static get createdAtColumn() {
+        return null;
+    }
+
     products() {
         return this.belongsTo('App/Models/Product');
     }

@@ -11,6 +11,10 @@ class Type extends Model {
     static get createdAtColumn() {
         return null;
     }
+
+    attributes() {
+        return this.belongsToMany('App/Models/Attribute');
+    }
 }
 
 module.exports = Type
