@@ -29,6 +29,10 @@ class User extends Model {
    *
    * @return {Object}
    */
+
+  static get updatedAtColumn() {
+    return null;
+  }
   tokens() {
     return this.hasMany('App/Models/Token');
   }

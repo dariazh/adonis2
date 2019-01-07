@@ -16,7 +16,7 @@ class Product extends Model {
         return this.belongsTo('App/Models/User');
     }
 
-    product_attributes() {
+    product_attribute() {
         return this.belongsToMany('App/Models/ProductAttribute');
     }
 }

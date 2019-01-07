@@ -1,21 +1,6 @@
 'use strict'
 
-/*
-|--------------------------------------------------------------------------
-| AttributeSeeder
-|--------------------------------------------------------------------------
-|
-| Make use of the Factory instance to seed database with dummy data or
-| make use of Lucid models directly.
-|
-*/
-
-/** @type {import('@adonisjs/lucid/src/Factory')} */
-const Factory = use('Factory');
-const Database = use('Database');
 const Type = use('App/Models/Type');
-const User = use('App/Models/User');
-const Product = use('App/Models/Product');
 const Attribute = use('App/Models/Attribute');
 
 
@@ -25,13 +10,20 @@ class AttributeSeeder {
 
     const  type = await Type.pair('name','id');
 
-    await Database.table('attributes').insert(
-        [{
-          name: 'color',
-          type_id: type.phone,
-        }
-        ]
-    )
+    const Attributes = [
+        { name: 'color', type_id: type.phone },
+        { name: 'display', type_id: type.phone },
+        { name: 'camera', type_id: type.phone },
+        { name: 'capacity', type_id: type.laptop },
+        { name: 'display', type_id: type.laptop },
+        { name: 'location', type_id: type.laptop },
+        { name: 'sensors', type_id: type.ebook },
+        { name: 'waterproof ', type_id: type.ebook },
+        { name: 'storage ', type_id: type.ebook },
+    ]
+
+      await Attribute.createMany(Attributes);
+
   }
 }
 

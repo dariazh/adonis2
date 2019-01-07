@@ -15,6 +15,7 @@ class ProductAttributesSchema extends Schema {
     });
   }
 
+
   down () {
     this.drop('product_attributes')
   }
