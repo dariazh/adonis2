@@ -20,7 +20,7 @@ Route.group(() => {
     Route.get('/register', 'AuthController.register')
     Route.get('/logout', 'AuthController.logout')
 
-    Route.resource('/product', 'ProductController').apiOnly()
-    Route.resource('/type', 'TypeController').apiOnly()
-    Route.resource('/attribute', 'AttributeController').apiOnly()
+    Route.resource('product', 'ProductController').apiOnly()
+    Route.resource('type', 'TypeController').apiOnly()
+    Route.resource('attribute', 'AttributeController').apiOnly()
 }).prefix('api/v1');

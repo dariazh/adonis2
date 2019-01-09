@@ -37,22 +37,47 @@ class ProductSeeder {
                 created_at: Database.fn.now()
             }
         ]
+        await Product.createMany(Products)
 
-        await Product.createMany(Products);
 
         /*Product_attribute*/
-        await ProductAttribute.query().delete();
-        const product = await Product.pair('name', 'id');
-
-        const attr_1 = await Attribute.findBy('name', 'color')
-        const attr_2 = await Attribute.findBy('name', 'display')
-
-        const prod_name = await Product.findByOrFail('name', 'iPhone 8 Plus')
-
-        const attrs = [attr_1.id, attr_2.id]
 
 
-        await prod_name.product_attribute().attach([attr_1.id])
+         const attrs = await Attribute.all();
+         const attr_row = attrs.rows
+         const products = await Product.createMany(Products)
+
+            // console.log(attrs, '1')
+            //console.log(products, '2')
+
+
+
+        //const prod = await Product.findBy('name', 'iPhone 8 Plus')
+        //const attr = await Attribute.findBy('name', 'camera')
+
+        //console.log(prod, attr)
+
+       /* await prod.product_attributes().attach(attr, (row) => {
+            row.value = 5
+            if (attr.id = 'iPhone') {
+                console.log('true')
+            }else{
+                console.log('false')
+            }
+        })*/
+
+
+        products.forEach(product => {
+                attr_row.forEach(attr => {
+                    if (product.type_id === attr.type_id) {
+                        product.product_attributes().attach(attr, (row) => {
+                            row.value = 5
+                        })
+                    }
+                })
+            })
+
+
 
     }
 }
