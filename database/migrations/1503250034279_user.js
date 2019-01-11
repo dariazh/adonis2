@@ -14,7 +14,7 @@ class UserSchema extends Schema {
         .notNullable()
         .unique();
       table.string('password', 60).notNullable();
-      table.timestamps();
+      table.timestamp('created_at').defaultTo(this.fn.now());
     });
   }
 
