@@ -1,7 +1,5 @@
 'use strict'
 
-const Attribute = use('App/Models/Attribute');
-
 class AttributeController {
     async index () {
         return [
@@ -27,10 +25,10 @@ class AttributeController {
         ]
     }
 
-    async edit () {
+    async update () {
         return [
             {
-                attributeController: "edit"
+                attributeController: "update"
             }
         ]
     }

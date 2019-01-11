@@ -1,7 +1,5 @@
 'use strict'
 
-const Type = use('App/Models/Type');
-
 class TypeController {
     async index () {
         return [
@@ -27,10 +25,10 @@ class TypeController {
         ]
     }
 
-    async edit () {
+    async update () {
         return [
             {
-                typeController: "edit"
+                typeController: "update"
             }
         ]
     }

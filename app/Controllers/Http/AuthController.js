@@ -1,5 +1,6 @@
-class AuthController {
+'use strict'
 
+class AuthController {
     async login() {
         return [
             {
@@ -23,7 +24,6 @@ class AuthController {
             }
         ]
     }
-
 }
 
-module.exports = AuthController;
+module.exports = AuthController

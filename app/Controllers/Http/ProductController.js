@@ -1,5 +1,4 @@
-'use strict';
-const Product = use('App/Models/Product');
+'use strict'
 
 
 class ProductController {
@@ -27,10 +26,10 @@ class ProductController {
         ]
     }
 
-    async edit () {
+    async update () {
         return [
             {
-                productController: "edit"
+                productController: "update"
             }
         ]
     }

@@ -14,11 +14,13 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
-
+Route.get('/', () => ({ status: 'Ok', version: '1.0.0' }));
 Route.group(() => {
-    Route.resource('user', 'AuthController')
-    Route.resource('product', 'ProductController')
-    Route.resource('type', 'TypeController')
-    Route.resource('attribute', 'AttributeController')
-}).prefix('api/v1');
+    Route.get('login', 'AuthController.login')
+    Route.get('register', 'AuthController.register')
+    Route.get('logout', 'AuthController.logout')
 
+    Route.resource('product', 'ProductController').apiOnly()
+    Route.resource('type', 'TypeController').apiOnly()
+    Route.resource('attribute', 'AttributeController').apiOnly()
+}).prefix('api/v1');
