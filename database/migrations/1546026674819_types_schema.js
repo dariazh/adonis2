@@ -6,9 +6,8 @@ const Schema = use('Schema')
 class TypesSchema extends Schema {
   up () {
     this.create('types', (table) => {
-      table.increments();
-      table
-          .string('name', 30).notNullable();
+      table.increments()
+      table.string('name', 30).notNullable();
     })
   }
 

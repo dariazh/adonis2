@@ -7,16 +7,9 @@ class AttributesSchema extends Schema {
   up () {
     this.create('attributes', table => {
       table.increments();
-      table
-          .string('name', 30).notNullable();
-      table
-          .integer('type_id').notNullable()
-          .index();
-      table
-          .foreign('type_id')
-          .references('id')
-          .on('types')
-          .onDelete('cascade');
+      table.string('name', 30).notNullable();
+      table.integer('type_id').notNullable().index();
+      table.foreign('type_id').references('id').on('types').onDelete('cascade');
     });
   }
 

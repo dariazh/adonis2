@@ -8,13 +8,14 @@ class Attribute extends Model {
         return null;
     }
 
-    type() {
-        return this.belongsTo('App/Models/Type');
+    static get createdAtColumn() {
+        return null;
     }
 
     product_attributes() {
-        return this.manyThrough('App/Models/ProductAttribute');
+        return this.belongsToMany('App/Models/ProductAttribute');
     }
+
 }
 
 module.exports = Attribute;
