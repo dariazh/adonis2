@@ -11,9 +11,7 @@ class Attribute extends Model {
     static get createdAtColumn() {
         return null;
     }
-    product_attributes() {
-        return this.belongsToMany('App/Models/ProductAttribute');
-    }
+
 }
 
 module.exports = Attribute

@@ -6,7 +6,7 @@ class Type {
         return result;
     }
 
-    static  async create(name){
+    static  async createType(name){
         const type = new this()
         type.name = name
         await type.save()
