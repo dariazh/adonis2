@@ -19,6 +19,10 @@ class Product extends Model {
     attributes() {
         return this.belongsToMany('App/Models/Attribute').pivotModel('App/Models/ProductAttribute');
     }
+    static boot() {
+        super.boot();
+        this.addTrait('App/Models/Traits/Repository');
+    }
 }
 
 module.exports = Product;
