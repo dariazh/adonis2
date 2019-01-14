@@ -1,51 +1,45 @@
-
-const Type = use('App/Models/Type');
 class Product {
-
     static async findAllProducts() {
-        const resultProduct = await this.all()
-        return resultProduct
+        const result = await this.all()
+        return result
     }
 
-    static async findByProductsId(id){
-        const  result = await this.findByOrFail('name',id)
+    static async findByProductsId(id) {
+        const  find_product = await this.findOrFail(id)
+        const result  = await find_product.attributes().fetch()
+
         return result;
     }
 
     static async updateByProductsId(params) {
         const {id, update_id} = params
 
-        const result = await this.findByOrFail('name',id)
-        result.merge({name:update_id})
-        result.save()
+        const  find_product = await this.findOrFail(id)
+        find_product.merge({name:update_id})
+        find_product.save()
+
+        const result  = await find_product.attributes().fetch()
 
         return result
     }
 
     static async createByProductsId(params){
-        const {id, price, type_name, user_name} = params
+        const {name} = params
+        await this.create(params)
 
-        const type_id = await Type.pair('name', 'id')
-        console.log(type_id.type_name)
-        const  result = await this.findOrCreate({name: id, price: price, type_id: type_id.type_name})
-        /*const {id} = params
-        return result*/
+        const  find_result = await this.findByOrFail('name', name)
+        const relation_result  = await find_result.attributes().fetch()
+
+
+        return relation_result
     }
 
-    /*
-
-    static async createByTypesId(params){
-        const {id} = params
-        const  result = await this.findOrCreate({name: id})
-        return result
-    }
-
-    static async deleteByTypesId(id,response){
-        const result = await this.findByOrFail({name: id});
+    static async deleteByProductsId(id,response){
+        const result = await this.findOrFail(id);
         await result.delete();
 
         return response.json({msg: 'Ok'});
-    }*/
+    }
 
 }
 
