@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const Model = use('Model')
+const Model = use('Model');
 
-class Type extends Model {
+class Attribute extends Model {
     static get updatedAtColumn() {
         return null;
     }
@@ -12,9 +12,10 @@ class Type extends Model {
         return null;
     }
 
-    attributes() {
-        return this.belongsToMany('App/Models/Attribute');
+    product_attributes() {
+        return this.belongsToMany('App/Models/ProductAttribute');
     }
+
 }
 
-module.exports = Type
+module.exports = Attribute;
