@@ -1,16 +1,16 @@
-class Type {
+class Attribute {
 
-    static async findAllTypes() {
+    static async findAllAttributes() {
         const result = await this.all();
         return result;
     }
 
-    static async findByTypesId(id) {
+    static async findByAttributesId(id) {
         const  result = await this.findOrFail(id)
         return result;
     }
 
-    static async updateByTypesId(params) {
+    static async updateByAttributesId(params) {
         const {id, update_id} = params
 
         const  result = await this.findOrFail(id)
@@ -20,12 +20,12 @@ class Type {
         return result
     }
 
-    static async createByTypesId(params){
+    static async createByAttributesId(params){
         const  result = await this.create(params)
         return result
     }
 
-    static async deleteByTypesId(id,response){
+    static async deleteByAttributesId(id,response){
         const result = await this.findOrFail(id);
         await result.delete();
 
@@ -35,4 +35,4 @@ class Type {
 }
 
 
-module.exports = Type;
+module.exports = Attribute;

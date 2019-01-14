@@ -4,22 +4,18 @@ const Type = use('App/Models/Type');
 class TypeController {
 
     async index () {
-       return Type.findAllTypes()
+        return Type.findAllTypes()
     }
 
-    async store() {
-        const data = {
-            'id': 'phone'
-        }
-
+    async store({ params, request }) {
+        const data = request.only(["name"])
         return Type.createByTypesId(data)
     }
 
-    async show({ params}) {
+    async show({ params }) {
         const {id} = params
         return Type.findByTypesId(id);
     }
-
 
     async update ({ params}) {
         const {id} = params
@@ -30,7 +26,7 @@ class TypeController {
         return Type.updateByTypesId(data)
     }
 
-    async destroy ({params,response}) {
+    async destroy ({params, response}) {
         const { id } = params;
         return Type.deleteByTypesId(id, response)
     }
