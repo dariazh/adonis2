@@ -1,35 +1,23 @@
 class Type {
 
-    static async findAllTypes() {
-        const result = await this.all();
-        return result;
-    }
-
-    static async findByTypesId(id) {
+    static async updateById(id, params) {
         const  result = await this.findOrFail(id)
-        return result;
-    }
-
-    static async updateByTypesId(params) {
-        const {id, update_id} = params
-
-        const  result = await this.findOrFail(id)
-        result.merge({name:update_id})
-        result.save()
+        result.merge(params)
+        await result.save()
 
         return result
     }
 
-    static async createByTypesId(params){
+    static async createNew(params){
         const  result = await this.create(params)
         return result
     }
 
-    static async deleteByTypesId(id,response){
+    static async deleteById(id){
         const result = await this.findOrFail(id);
         await result.delete();
 
-        return response.json({msg: 'Ok'});
+        return result
     }
 
 }

@@ -3,31 +3,31 @@ const Attribute = use('App/Models/Attribute');
 
 class AttributeController {
     async index () {
-        return Attribute.findAllAttributes()
+        return await Attribute.all()
     }
 
-    async store({ params, request }) {
+    async store({ request, response }) {
         const data = request.only(["name", "type_id"])
-        return Attribute.createByAttributesId(data)
+        const createAttr = await Attribute.createNew(data)
+        return response.status(201).json(createAttr)
     }
 
     async show({ params }) {
         const {id} = params
-        return Attribute.findByAttributesId(id);
+        return await Attribute.findOrFail(id);
     }
 
-    async update ({ params}) {
+    async update ({ params, request}) {
+        const data = request.only(["name", "type_id"])
         const {id} = params
-        const data = {
-            'id': id,
-            'update_id': 'UU^9AH'
-        }
-        return Attribute.updateByAttributesId(data)
+
+        return Attribute.updateById(id,data)
     }
 
     async destroy ({params, response}) {
         const { id } = params;
-        return Attribute.deleteByAttributesId(id, response)
+        const delAttr = await Attribute.deleteById(id)
+        return response.json(delAttr);
     }
 }
 

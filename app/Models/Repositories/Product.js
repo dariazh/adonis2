@@ -1,44 +1,41 @@
 class Product {
-    static async findAllProducts() {
-        const result = await this.all()
+    static async findAll() {
+        const results = await this.all()
+        for (let result of results.rows) {
+            await result.loadMany(['attributes', 'type', 'users'])
+        }
+
+        return results.toJSON()
+    }
+
+    static async findById(id) {
+        const find_product = await this.findOrFail(id)
+        await find_product.loadMany(['attributes', 'type', 'users'])
+
+        return find_product
+    }
+
+    static async updateById(id, params) {
+        const  result = await this.findOrFail(id)
+        result.merge(params)
+        await result.save()
+        await result.loadMany(['attributes', 'type', 'users'])
+
         return result
     }
 
-    static async findByProductsId(id) {
-        const  find_product = await this.findOrFail(id)
-        const result  = await find_product.attributes().fetch()
-
-        return result;
-    }
-
-    static async updateByProductsId(params) {
-        const {id, update_id} = params
-
-        const  find_product = await this.findOrFail(id)
-        find_product.merge({name:update_id})
-        find_product.save()
-
-        const result  = await find_product.attributes().fetch()
+    static async createNew(params){
+        const  result = await this.create(params)
+        await result.loadMany(['attributes', 'type', 'users'])
 
         return result
     }
 
-    static async createByProductsId(params){
-        const {name} = params
-        await this.create(params)
-
-        const  find_result = await this.findByOrFail('name', name)
-        const relation_result  = await find_result.attributes().fetch()
-
-
-        return relation_result
-    }
-
-    static async deleteByProductsId(id,response){
+    static async deleteById(id){
         const result = await this.findOrFail(id);
         await result.delete();
 
-        return response.json({msg: 'Ok'});
+        return result
     }
 
 }
