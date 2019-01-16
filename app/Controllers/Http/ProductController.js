@@ -7,9 +7,16 @@ class ProductController {
         return Product.findAll(request.only(['filters', 'order', 'sort']))
     }
 
-    async store({ request }) {
+    async store({ request, response }) {
         const data = request.only(['name', 'price', 'type_id', 'user_id', 'created_at'])
-        return Product.createNew(data)
+        const attr = request.input('attribute')
+        const newProduct = await Product.createNew({
+            data: data,
+            attr: attr
+        })
+
+        return response.status(201).json(newProduct);
+
     }
 
     async show({ params, response }) {
@@ -22,8 +29,9 @@ class ProductController {
     async update ({ params, request, response}) {
         const data = request.only(['name', 'price', 'type_id', 'user_id', 'created_at'])
         const {id} = params
+        const attr = request.input('attribute')
 
-        const showUpdateProd = await Product.updateById(id,data)
+        const showUpdateProd = await Product.updateById({id: id, data: data, attr:attr})
         return response.json(showUpdateProd);
     }
 

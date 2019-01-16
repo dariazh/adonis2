@@ -21,19 +21,21 @@ class Product {
         return find_product
     }
 
-    static async updateById(id, params) {
-        const  result = await this.findOrFail(id)
+    static async updateById({id, params, attr}) {
+        const result = await this.findOrFail(id)
         result.merge(params)
         await result.save()
+        await result.attributes().pivotQuery().where('attribute_id', attr).update({value: attr})
         await result.loadMany(['attributes', 'type', 'users'])
 
         return result
     }
 
-    static async createNew(params){
-        const  result = await this.create(params)
-        await result.loadMany(['attributes', 'type', 'users'])
-
+    static async createNew({data, attr}){
+        const  result = await this.create(data)
+        await result.attributes().attach(attr, row => {
+            row.value = attr;
+        })
         return result
     }
 

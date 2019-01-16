@@ -17,7 +17,7 @@ class Product extends Model {
     }
 
     attributes() {
-        return this.belongsToMany('App/Models/Attribute').pivotModel('App/Models/ProductAttribute').withPivot(['value']).orderBy('value', 'desc');
+        return this.belongsToMany('App/Models/Attribute').pivotModel('App/Models/ProductAttribute').withPivot(['value']);
     }
     static boot() {
         super.boot();
