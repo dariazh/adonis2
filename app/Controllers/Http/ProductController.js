@@ -3,11 +3,11 @@
 const Product = use('App/Models/Product');
 
 class ProductController {
-    async index () {
-        return Product.findAll()
+    async index ({ request }) {
+        return Product.findAll(request.only(['filters', 'order', 'sort']))
     }
 
-    async store({ request, response}) {
+    async store({ request }) {
         const data = request.only(['name', 'price', 'type_id', 'user_id', 'created_at'])
         return Product.createNew(data)
     }

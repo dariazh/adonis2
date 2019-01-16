@@ -1,11 +1,17 @@
 class Product {
-    static async findAll() {
-        const results = await this.all()
-        for (let result of results.rows) {
-            await result.loadMany(['attributes', 'type', 'users'])
-        }
-
-        return results.toJSON()
+    static async findAll({ filters = null, order = 'id', sort = 'desc'}) {
+        const filtersFields = ['type_id', 'user_id', 'name'];
+        return this.query().where(function(){
+            if(filters && typeof filters === 'object'){
+                Object.keys(filters).map(field => {
+                    if(filtersFields.includes(field)){
+                        this.where(field, filters[field])
+                    }
+                })
+            }
+        })
+            .orderBy(order, sort)
+            .fetch();
     }
 
     static async findById(id) {
