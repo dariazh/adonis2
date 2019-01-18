@@ -17,7 +17,11 @@ class Product extends Model {
     }
 
     attributes() {
-        return this.belongsToMany('App/Models/Attribute').pivotModel('App/Models/ProductAttribute');
+        return this.belongsToMany('App/Models/Attribute').pivotModel('App/Models/ProductAttribute').withPivot(['value']);
+    }
+    static boot() {
+        super.boot();
+        this.addTrait('App/Models/Traits/Repository');
     }
 }
 
